@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Any1 Telecom</title>
     <link rel="stylesheet" href="./assets/css/reset.css" type="text/css">
+    <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" type="text/css">
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
 </head>
 <body>
@@ -18,13 +19,13 @@
         <section class="hero-sec">
             <div class="container hero-container">
                 <div class="content-box hero-content-box">
-                    <h1 class="hero-main-tit">
+                    <h2 class="hero-main-tit">
                         오늘도 <span class="orange-txt">실시간 업데이트<br>
                         믿고 찾는</span> 휴대폰 대리점
-                    </h1>
-                    <h2 class="hero-sub-tit">
-                        대한민국 NO.1 <br class="no-pc">유·무선 통신 유통 플랫폼
                     </h2>
+                    <h3 class="hero-sub-tit">
+                        대한민국 NO.1 <br class="no-pc">유·무선 통신 유통 플랫폼
+                    </h3>
                     <div class="image-box hero-image-box hero-image-box-sm no-pc">
                         <img src="./assets/images/robot/hero-robot-front.webp" class="hero-robot-front" alt="히어로 정면 로봇">
                     </div>
@@ -38,6 +39,679 @@
             </div>
         </section>
 
+        <!-- recommend-sec -->
+        <section class="recommend-sec">
+            <div class="container recommend-container">
+                <h2 class="sec-tit orange-txt">추천 상품</h2>
+                <ul class="tab-btn-box">
+                    <li class="tab-btn selected">
+                        <button type="button">5G 모델 초특가</button>
+                    </li>
+                    <li class="tab-btn">
+                        <button type="button">4G 모델 초특가</button>
+                    </li>
+                </ul>
+                <ul class="tab-content-box">
+                    <li class="tab-content selected">
+                        <div class="tab-panel">
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper recommendSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/iphone_17/purple.webp" class="phone-image" alt="아이폰 17">
+                                        <h4 class="card-tit phone-name">
+                                            아이폰 17
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="iphone_17_purple" name="iphone_17_color"
+                                                        data-color="purple">
+                                                        <label for="iphone_17_purple" data-img="iphone_17/purple" style="color: #e6d5f1;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_17_green" name="iphone_17_color" data-color="green">
+                                                        <label for="iphone_17_green" data-img="iphone_17/green" style="color: #b4c294;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_17_blue" name="iphone_17_color" data-color="blue">
+                                                        <label for="iphone_17_blue" data-img="iphone_17/blue" style="color: #a2b9dc;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_17_white" name="iphone_17_color" data-color="white">
+                                                        <label for="iphone_17_white" data-img="iphone_17/white" style="color: #fcfcfc;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_17_black" name="iphone_17_color" data-color="black">
+                                                        <label for="iphone_17_black" data-img="iphone_17/black" style="color: #353839;"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="iphone_17_256GB" name="iphone_17_storage"> 
+                                                        <label for="iphone_17_256GB" data-before-cost="1,290,000원" data-after-cost="876,000원">256GB</label>
+                                                    </li>
+                                                    <li class="storage">
+                                                        <input type="radio" id="iphone_17_512GB" name="iphone_17_storage"> 
+                                                        <label for="iphone_17_512GB" data-before-cost="1,590,000원" data-after-cost="1,173,000원">512GB</label>
+                                                    </li>
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        1,290,000원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        876,000원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=310" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/iphone_air/blue.webp" class="phone-image" alt="아이폰 Air">
+                                        <h4 class="card-tit phone-name">
+                                            아이폰 Air
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="iphone_air_blue" name="iphone_air_color" data-color="blue">
+                                                        <label for="iphone_air_blue" data-img="iphone_air/blue" style="color: #e3f1fa;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_air_gold" name="iphone_air_color" data-color="gold">
+                                                        <label for="iphone_air_gold" data-img="iphone_air/gold" style="color: #faf2e3;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_air_white" name="iphone_air_color" data-color="white">
+                                                        <label for="iphone_air_white" data-img="iphone_air/white" style="color: #fcfcfc;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_air_black" name="iphone_air_color" data-color="black">
+                                                        <label for="iphone_air_black" data-img="iphone_air/black" style="color: #000000;"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="iphone_air_256GB" name="iphone_air_storage"> 
+                                                        <label for="iphone_air_256GB" data-before-cost="1,590,000원" data-after-cost="1,290,000원">256GB</label>
+                                                    </li>
+                                                    <li class="storage">
+                                                        <input type="radio" id="iphone_air_512GB" name="iphone_air_storage"> 
+                                                        <label for="iphone_air_512GB" data-before-cost="1,890,000원" data-after-cost="1,287,000원">512GB</label>
+                                                    </li>
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        1,590,000원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        1,290,000원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=310" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/iphone_17pro/white.webp" class="phone-image" alt="아이폰 17 Pro">
+                                        <h4 class="card-tit phone-name">
+                                            아이폰 17 Pro
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="iphone_17pro_white" name="iphone_17pro_color" data-color="white">
+                                                        <label for="iphone_17pro_white" data-img="iphone_17pro/white" style="color: #e8e8e8;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_17pro_orange" name="iphone_17pro_color" data-color="orange">
+                                                        <label for="iphone_17pro_orange" data-img="iphone_17pro/orange" style="color: #f8985e;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_17pro_blue" name="iphone_17pro_color" data-color="blue">
+                                                        <label for="iphone_17pro_blue" data-img="iphone_17pro/blue" style="color: #5a5f79;"></label>
+                                                    </li>
+                                                   
+                                                    
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="iphone_17pro_256GB" name="iphone_17pro_storage"> 
+                                                        <label for="iphone_17pro_256GB" data-before-cost="1,790,000원" data-after-cost="1,188,000원">256GB</label>
+                                                    </li>
+                                                    <li class="storage">
+                                                        <input type="radio" id="iphone_17pro_512GB" name="iphone_17pro_storage"> 
+                                                        <label for="iphone_17pro_512GB" data-before-cost="2,090,000원" data-after-cost="1,496,000원">512GB</label>
+                                                    </li>
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        1,790,000원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        1,188,000원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=309" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/galaxy_zFlip/blue.webp" class="phone-image" alt="갤럭시 Z 플립7">
+                                        <h4 class="card-tit phone-name">
+                                            갤럭시 Z 플립7
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="galaxy_zFlip_blue" name="galaxy_zFlip_color" data-color="blue">
+                                                        <label for="galaxy_zFlip_blue" data-img="galaxy_zFlip/blue" style="color: #3B5B8A;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_zFlip_red" name="galaxy_zFlip_color" data-color="red">
+                                                        <label for="galaxy_zFlip_red" data-img="galaxy_zFlip/red" style="color: #EE6779;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_zFlip_white" name="galaxy_zFlip_color" data-color="white">
+                                                        <label for="galaxy_zFlip_white" data-img="galaxy_zFlip/white" style="color: #F5F7F6;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_zFlip_black" name="galaxy_zFlip_color" data-color="black">
+                                                        <label for="galaxy_zFlip_black" data-img="galaxy_zFlip/black" style="color: #212721;"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="galaxy_zFlip_256GB" name="galaxy_zFlip_storage"> 
+                                                        <label for="galaxy_zFlip_256GB" data-before-cost="1,485,000원" data-after-cost="485,000원">256GB</label>
+                                                    </li>
+                                                    <li class="storage">
+                                                        <input type="radio" id="galaxy_zFlip_512GB" name="galaxy_zFlip_storage"> 
+                                                        <label for="galaxy_zFlip_512GB" data-before-cost="1,643,400원" data-after-cost="1,479,300원">512GB</label>
+                                                    </li>
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        1,485,000원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        1,188,000원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=308" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/galaxy_zFold/mint.webp" class="phone-image" alt="갤럭시 Z 폴드7">
+                                        <h4 class="card-tit phone-name">
+                                            갤럭시 Z 폴드7
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="galaxy_zFold_mint" name="galaxy_zFold_color" data-color="mint">
+                                                        <label for="galaxy_zFold_mint" data-img="galaxy_zFold/mint" style="color: #C8DDDD;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_zFold_blue" name="galaxy_zFold_color" data-color="blue">
+                                                        <label for="galaxy_zFold_blue" data-img="galaxy_zFold/blue" style="color: #3B5B8A;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_zFold_silver" name="galaxy_zFold_color" data-color="silver">
+                                                        <label for="galaxy_zFold_silver" data-img="galaxy_zFold/silver" style="color: #B0B7B9;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_zFold_black" name="galaxy_zFold_color" data-color="black">
+                                                        <label for="galaxy_zFold_black" data-img="galaxy_zFold/black" style="color: #4A4A4D;"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="galaxy_zFold_256GB" name="galaxy_zFold_storage"> 
+                                                        <label for="galaxy_zFold_256GB" data-before-cost="2,379,300원" data-after-cost="1,479,300원">256GB</label>
+                                                    </li>
+                                                    <li class="storage">
+                                                        <input type="radio" id="galaxy_zFold_512GB" name="galaxy_zFold_storage"> 
+                                                        <label for="galaxy_zFold_512GB" data-before-cost="2,537,700원" data-after-cost="1,637,700원">512GB</label>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        2,379,300원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        1,479,300원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=309" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/galaxy_s25/sky_blue.webp" class="phone-image" alt="갤럭시 S25">
+                                        <h4 class="card-tit phone-name">
+                                            갤럭시 S25
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="galaxy_s25_sky_blue" name="galaxy_s25_color" data-color="sky_blue">
+                                                        <label for="galaxy_s25_sky_blue" data-img="galaxy_s25/sky_blue" style="color: #C8D3DF;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_s25_blue" name="galaxy_s25_color" data-color="blue">
+                                                        <label for="galaxy_s25_blue" data-img="galaxy_s25/blue" style="color: #3C5B8A;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_s25_mint" name="galaxy_s25_color" data-color="mint">
+                                                        <label for="galaxy_s25_mint" data-img="galaxy_s25/mint" style="color: #D3E8DD;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_s25_silver" name="galaxy_s25_color" data-color="silver">
+                                                        <label for="galaxy_s25_silver" data-img="galaxy_s25/silver" style="color: #7F7F7E;"></label>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="galaxy_s25_256GB" name="galaxy_s25_storage"> 
+                                                        <label for="galaxy_s25_256GB" data-before-cost="1,155,000원" data-after-cost="305,000원">256GB</label>
+                                                    </li>
+                                                    <li class="storage">
+                                                        <input type="radio" id="galaxy_s25_512GB" name="galaxy_s25_storage"> 
+                                                        <label for="galaxy_s25_512GB" data-before-cost="1,298,000원" data-after-cost="448,000원">512GB</label>
+                                                    </li>
+                                                    
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        1,155,000원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        305,000원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=303" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/iphone_16/white.webp" class="phone-image" alt="아이폰 16">
+                                        <h4 class="card-tit phone-name">
+                                            아이폰 16
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="iphone_16_white" name="iphone_16_color" data-color="white">
+                                                        <label for="iphone_16_white" data-img="iphone_16/white" style="color: #E0E0E0;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_16_green" name="iphone_16_color" data-color="green">
+                                                        <label for="iphone_16_green" data-img="iphone_16/green" style="color: #A6CDCB;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_16_purple" name="iphone_16_color" data-color="purple">
+                                                        <label for="iphone_16_purple" data-img="iphone_16/purple" style="color: #90A1E0;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_16_pink" name="iphone_16_color" data-color="pink">
+                                                        <label for="iphone_16_pink" data-img="iphone_16/pink" style="color: #EBA7D2;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_16_black" name="iphone_16_color" data-color="black">
+                                                        <label for="iphone_16_black" data-img="iphone_16/black" style="color: #000000;"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="iphone_16_256GB" name="iphone_16_storage"> 
+                                                        <label for="iphone_16_128GB" data-before-cost="1,155,000원" data-after-cost="467,000원">128GB</label>
+                                                    </li>
+                                                    <li class="storage">
+                                                        <input type="radio" id="iphone_16_256GB" name="iphone_16_storage"> 
+                                                        <label for="iphone_16_256GB" data-before-cost="1,400,000원" data-after-cost="947,000원">256GB</label>
+                                                    </li>
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        1,155,000원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        467,000원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=301" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card last-card yellow-gradient-bg recommend-card swiper-slide">
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=301" class="cta sub-cta" target="_blank">추천 상품 더 보기</a> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </li>
+                    <li class="tab-content">
+                        <div class="tab-panel">
+                            <div class="swiper-button-prev"></div>
+                            <div class="swiper recommendSwiper">
+                                <div class="swiper-wrapper">
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/galaxy_a16/silver.webp" class="phone-image" alt="갤럭시 A16">
+                                        <h4 class="card-tit phone-name">
+                                            갤럭시 A16
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="galaxy_a16_silver" name="galaxy_a16_color"
+                                                        data-color="silver">
+                                                        <label for="galaxy_a16_silver" data-img="galaxy_a16/silver" style="color: #C7C8CA;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_a16_green" name="galaxy_a16_color"
+                                                        data-color="green">
+                                                        <label for="galaxy_a16_green" data-img="galaxy_a16/green" style="color: #C1D1A6;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="galaxy_a16_black" name="galaxy_a16_color"
+                                                        data-color="black">
+                                                        <label for="galaxy_a16_black" data-img="galaxy_a16/black" style="color: #14192F;"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="galaxy_a16_128GB" name="galaxy_a16_storage"> 
+                                                        <label for="galaxy_a16_256GB" data-before-cost="319,000원" data-after-cost="91,000원">128GB</label>
+                                                    </li>
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        319,000원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        91,000원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=294" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/kid/pochacco.webp" class="phone-image" alt="포차코 키즈폰">
+                                        <h4 class="card-tit phone-name">
+                                            포차코 키즈폰
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="pochacco" name="pochacco_color" data-color="mint">
+                                                        <label for="pochacco" data-img="kid/pochacco" style="color: #C5E9E8;"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="pochacco_128GB" name="pochacco"> 
+                                                        <label for="pochacco_128GB" data-before-cost="349,800원" data-after-cost="107,800원">256GB</label>
+                                                    </li>
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        349,800원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        107,800원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=2314" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/iphone_16e/black.webp" class="phone-image" alt="아이폰 16e">
+                                        <h4 class="card-tit phone-name">
+                                            아이폰 16e
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="iphone_16e_black" name="iphone_16e_color" data-color="black">
+                                                        <label for="iphone_16e_black" data-img="iphone_16e/black" style="color: #4B4F52;"></label>
+                                                    </li>
+                                                    <li class="color">
+                                                        <input type="radio" id="iphone_16e_white" name="iphone_16e_color" data-color="white">
+                                                        <label for="iphone_16e_white" data-img="iphone_16e/white" style="color: #F5F2ED;"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="iphone_16e_128GB" name="iphone_16e_storage"> 
+                                                        <label for="iphone_16e_128GB" data-before-cost="990,000원" data-after-cost="107,000원">128GB</label>
+                                                    </li>
+                                                    <li class="storage">
+                                                        <input type="radio" id="iphone_16e_258GB" name="iphone_16e_storage"> 
+                                                        <label for="iphone_16e_258GB" data-before-cost="1,140,000원" data-after-cost="290,000원">258GB</label>
+                                                    </li>
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        990,000원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        107,000원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="https://www.kt1004.co.kr/" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card yellow-gradient-bg recommend-card swiper-slide">
+                                        <img src="./assets/images/phone/kid/pokemon.webp" class="phone-image" alt="ZEM폰 포켓몬에디션3">
+                                        <h4 class="card-tit phone-name">
+                                            ZEM 포켓몬에디션3
+                                        </h4>
+                                        <div class="phone-option-box">
+                                            <div class="color-option phone-option">
+                                                <p class="option-name">
+                                                    색상
+                                                </p>
+                                                <ul class="color-list">
+                                                    <li class="color selected">
+                                                        <input type="radio" id="pokemon_white" name="pokemon" data-color="white">
+                                                        <label for="pokemon_white" data-img="kid/pokemon" style="color: #ECECEC;"></label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="storage-option phone-option">
+                                                <p class="option-name">
+                                                    용량
+                                                </p>
+                                                <ul class="storage-list">
+                                                    <li class="storage selected">
+                                                        <input type="radio" id="pokemon_128GB" name="pokemon_storage"> 
+                                                        <label for="pokemon_128GB" data-before-cost="326,700원" data-after-cost="151,900원">128GB</label>
+                                                    </li>
+                                                </ul>
+                                            </div> 
+                                            <div class="cost-option phone-option">
+                                                <p class="option-name">
+                                                    가격
+                                                </p>
+                                                <ul class="cost-list">
+                                                    <li class="before-cost">
+                                                        326,700원
+                                                    </li>
+                                                    <li class="after-cost">
+                                                        151,900원
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>   
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=2310" class="cta sub-cta" target="_blank">자세히 보기</a> 
+                                    </div>
+                                    <div class="card last-card yellow-gradient-bg recommend-card swiper-slide">
+                                        <a href="http://assatel.cafe24.com/ONLINE/online_ppom/view.asp?board_idx=301" class="cta sub-cta" target="_blank">추천 상품 더 보기</a> 
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-button-next"></div>
+                        </div>
+                        <div class="swiper-pagination"></div>
+                    </li>
+                </ul>
+                <p class="small-desc recommend-small-desc">
+                    휴대폰 가격은 현재 광고 중인 요금제표 그대로 개통 진행 됩니다.<br>
+                    공식 신청서 작성 시 나오는 가격은 무시하고 작성해 주세요.
+                </p>
+            </div>
+        </section>
         
     </main>
 
@@ -52,7 +726,7 @@
 
 
 
-
+    <script src="./assets/js/swiper-bundle.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

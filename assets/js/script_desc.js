@@ -4,6 +4,7 @@ const tabContents = document.querySelectorAll(".tab-content");
 const colorLabels = document.querySelectorAll(".color label");
 const storageLabels = document.querySelectorAll(".storage label");
 
+// 초기 화면에 필요한 Swiper 객체 초기화
 let recommendSwiperObj = recommendSwiper(tabContents[0]);
 
 // 선택된 요소들의 부모 요소에 ".selected"를 제거하는 함수
@@ -30,6 +31,8 @@ function recommendSwiper(args) {
     let swiper = new Swiper(args.querySelector(".recommendSwiper"), {
 
         slidesPerView: 1,
+        /* navigation이나 pagination이 넓은 범위를 가리키면 Swiper가 요소를 올바르게 못 찾을 수 있으므로
+           querySelector()를 통해 좁은 범위로 지정 */
         navigation: {
             nextEl: args.querySelector(".swiper-button-next"),
             prevEl: args.querySelector(".swiper-button-prev"),
@@ -43,7 +46,7 @@ function recommendSwiper(args) {
             // 화면 너비가 1440px 이상일 때 적용
             1440: {
                 slidesPerView: 4,
-                spaceBetween: 30
+                spaceBetween: 30,
             },
             // slidesPerView에 소수점을 쓸 때 slidesPerGroup을 통해 마지막 카드가 한 번의 슬라이드로 온전히 보이게 함
             1200: {
@@ -71,7 +74,6 @@ function recommendSwiper(args) {
             }
         }
     });
-
     return swiper;
 }
 
@@ -81,6 +83,7 @@ tabBtns.forEach((tabBtn) => {
         let idx = Array.from(tabBtns).indexOf(this);
 
         clearParentSelected(tabBtns);
+        // 콜백 함수에서 this 키워드를 사용하려면 콜백은 function () {} 구조로 정의해야 함
         addSelected(this.parentElement);
 
         clearCurrentSelected(tabContents);
@@ -92,10 +95,7 @@ tabBtns.forEach((tabBtn) => {
         }
 
         // display: none 상태에서는 Swiper가 제대로 초기화되지 않으므로 addSelected() 호출 이후에 Swiper 객체 생성
-
-        console.log("재할당전");
         recommendSwiperObj = recommendSwiper(tabContents[idx]);
-        console.log("재할당후");
     });
 });
 
@@ -103,7 +103,7 @@ tabBtns.forEach((tabBtn) => {
 colorLabels.forEach((colorLabel) => {
     colorLabel.addEventListener("click", function () {
         let currentCard = this.closest(".recommend-card");
-        let colorLabelsOfCurrentCard = currentCard.querySelectorAll(".color label");
+        let colorLabelsOfCurrentCard = currentCard.querySelectorAll("label");
         let dataImg = this.dataset.img;
         let img = currentCard.querySelector("img");
 
@@ -119,6 +119,7 @@ storageLabels.forEach((storageLabel) => {
     storageLabel.addEventListener("click", function () {
         let currentCard = this.closest(".recommend-card");
         let storageLabelsOfCurrentCard = currentCard.querySelectorAll(".storage label");
+        /* DOM의 data-*속성에서 *은 소문자 + 하이픈의 조합만 가능하며 JS에서는 해당 부분을 camelCase 방식으로 호출해야 함*/
         let dataBeforeCost = this.dataset.beforeCost;
         let dataAfterCost = this.dataset.afterCost;
         let beforeCostOfCurrentCard = currentCard.querySelector(".before-cost");
@@ -129,6 +130,6 @@ storageLabels.forEach((storageLabel) => {
 
         beforeCostOfCurrentCard.textContent = dataBeforeCost;
         afterCostOfCurrentCard.textContent = dataAfterCost;
+
     });
 });
-
