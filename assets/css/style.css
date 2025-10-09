@@ -192,6 +192,7 @@ button {
     text-align: center;
     line-height: 1.4;
     letter-spacing: 0.02em;
+    margin-top: var(--space-xl);
 }
 
 /* ──────────────── hero-sec ──────────────── */
@@ -467,10 +468,6 @@ button {
 .recommend-card .cta:hover::after {
     border-color: var(--black-color);
     background-color: var(--black-color);
-}
-
-.recommend-small-desc {
-    margin-top: var(--space-xl);
 }
 
 /* ──────────────── review-sec ──────────────── */
