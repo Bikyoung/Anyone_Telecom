@@ -1,3 +1,55 @@
+//  ──────────────── canvas ────────────────
+const circleCanvases = document.querySelectorAll(".circle-canvas");
+const meteorCanvases = document.querySelectorAll(".meteor-canvas");
+
+// 브라우저 창의 해상도가 변경될 시 canvas의 내부 해상도와 스타일 크기를 재설정
+window.addEventListener("resize", () => {
+    circleCanvases.forEach((circleCanvas) => {
+        /* - JS에서 DOM 요소의 스타일에 접근하기 위해선 style 속성 또는 getComputedStyle()을 사용해야 함
+             (단, style 속성 사용은 DOM 요소의 스타일을 HTML 태그 내 style 속성으로 지정한 경우만 가능)
+           - JS에서 HTML 태그 내 속성은 직접 접근 가능
+           - offsetWidth, offsetHeight: 브라우저가 기본 제공하는 HTML 태그 내 속성으로 해당 요소가 렌더링된 실제 크기를 제공 */
+        let parentWidth = circleCanvas.closest("section").offsetWidth;
+        let parentHeight = circleCanvas.closest("section").offsetHeight;
+
+        /* - canvas의 내부 해상도를 설정
+           - 일반 DOM 요소는 HTML 태그 내 width, height 속성이 없지만 canvas는 특별한 DOM 요소로 HTML 태그 내 width, height 속성이 존재 */
+        circleCanvas.width = parentWidth;
+        circleCanvas.height = parentHeight;
+
+        /* - canvas의 스타일 크기를 설정
+           - canvas의 내부 해상도와 스타일 크기를 일치시켜 canvas에 그린 도형의 왜곡을 방지
+           - style 속성의 width와 height 속성 값은 단위를 포함한 문자열로 설정해야 함 */
+        circleCanvas.style.width = `${parentWidth}px`;
+        circleCanvas.style.height = `${parentHeight}px`;
+    });
+
+    meteorCanvases.forEach((meteorCanvas) => {
+        let parentWidth = meteorCanvas.closest("section").offsetWidth;
+        let parentHeight = meteorCanvas.closest("section").offsetHeight;
+
+        meteorCanvas.width = parentWidth;
+        meteorCanvas.height = parentHeight;
+
+        meteorCanvas.style.width = `${parentWidth}px`;
+        meteorCanvas.style.height = `${parentHeight}px`;
+    });
+});
+
+// 깜빡이는 원 클래스
+class Circle {
+    // JS
+    constructor(xRatio, yRatio) {
+        this.xRatio = xRatio;
+        this.yRatio = yRatio;
+        this.radius = (Math.random() * 5) + 1;
+        this.alpha = Math.random();
+        this.alphaDirection = this.alpha > 0.5 ? -1 : 1;
+        this.speed = Math.random() * 0.01 + 0.005;
+    }
+}
+
+
 //  ──────────────── recommend-sec ──────────────── 
 const tabBtns = document.querySelectorAll(".tab-btn button");
 const tabContents = document.querySelectorAll(".tab-content");

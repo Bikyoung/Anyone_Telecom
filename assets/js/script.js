@@ -1,3 +1,53 @@
+//  ──────────────── canvas ────────────────
+const circleCanvases = document.querySelectorAll(".circle-canvas");
+const meteorCanvases = document.querySelectorAll(".meteor-canvas");
+
+// 브라우저 창의 해상도가 변경될 시 canvas의 내부 해상도와 스타일 크기를 재설정
+window.addEventListener("resize", () => {
+    circleCanvases.forEach((circleCanvas) => {
+        let parentWidth = circleCanvas.closest("section").offsetWidth;
+        let parentHeight = circleCanvas.closest("section").offsetHeight;
+
+        // canvas의 내부 해상도를 설정
+        circleCanvas.width = parentWidth;
+        circleCanvas.height = parentHeight;
+
+        // canvas의 스타일 크기를 설정
+        circleCanvas.style.width = `${parentWidth}px`;
+        circleCanvas.style.height = `${parentHeight}px`;
+    });
+
+    meteorCanvases.forEach((meteorCanvas) => {
+        let parentWidth = meteorCanvas.closest("section").offsetWidth;
+        let parentHeight = meteorCanvas.closest("section").offsetHeight;
+
+        meteorCanvas.width = parentWidth;
+        meteorCanvas.height = parentHeight;
+
+        meteorCanvas.style.width = `${parentWidth}px`;
+        meteorCanvas.style.height = `${parentHeight}px`;
+    });
+});
+
+// 깜빡이는 원 클래스
+class Circle {
+    constructor(xRatio, yRatio) {
+        this.xRatio = xRatio;
+        this.yRatio = yRatio;
+        this.radius = (Math.random() * 5) + 1;
+        this.alpha = Math.random();
+        this.alphaDirection = this.alpha > 0.5 ? -1 : 1;
+        this.speed = Math.random() * 0.01 + 0.005;
+    }
+
+    alphaUpdate() {
+        this.alpha += this.alphaDirection * this.speed;
+
+        if ((this.alpha <= 0.0) || (this.alpha >= 1.0)) { }
+    }
+}
+
+
 //  ──────────────── recommend-sec ──────────────── 
 const tabBtns = document.querySelectorAll(".tab-btn button");
 const tabContents = document.querySelectorAll(".tab-content");
