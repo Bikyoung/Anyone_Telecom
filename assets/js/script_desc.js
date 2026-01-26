@@ -38,15 +38,72 @@ window.addEventListener("resize", () => {
 
 // 깜빡이는 원 클래스
 class Circle {
-    // JS
+    /* JS에서는 별도의 필드 선언문 없이도 다양한 방법으로 필드를 동적 추가할 수 있음
+       제일 권장되는 방법은 생성자 내 this 키워드를 이용하여 필드를 동적 추가하는 방법임 */
     constructor(xRatio, yRatio) {
+        /* canvas에 그린 도형의 좌표는 절댓값이 아닌 상댓값(canvas 크기에 대한 비율)으로 지정해야
+           반응형 레이아웃에서도 도형의 시각적 위치가 일관됨 */
         this.xRatio = xRatio;
         this.yRatio = yRatio;
         this.radius = (Math.random() * 5) + 1;
+        this.color = "#FC8A46";
         this.alpha = Math.random();
-        this.alphaDirection = this.alpha > 0.5 ? -1 : 1;
+        // 투명도 방향 : 투명도를 증가시킬지/감소시킬지 결정
+        this.alphaDirection = this.alpha >= 0.5 ? -1 : 1;
+        // 변화량 : update() 시 투명도를 얼만큼 변화시킬지 결정
         this.speed = Math.random() * 0.01 + 0.005;
     }
+
+    /* JS에서는 1) 클래스 멤버 함수 정의 시 2) 화살표 함수 정의 시
+       3) 객체 메서드 축약형 정의 시 function 키워드 사용 X
+       (+) 객체 메서드 축약형 : 객체 내 속성값으로 메서드를 정의할 시 속성명을 별도로 명시하지 않고
+                               함수명을 속성명으로 지정한 형태 */
+    // 투명도 및 투명도 방향을 업데이트하는 함수
+    update() {
+        this.alpha += this.alphaDirection * this.alpha;
+
+        if (this.alpha >= 1.0) {
+            this.alphaDirection = -1;
+            this.alpha = 1.0;
+        } else if (this.alpha <= 0.0) {
+            this.alphaDirection = 1;
+            this.alpha = 0.0;
+        }
+    }
+
+    // 그리기 설정 및 canvas 내부 버퍼에 즉시 도형을 그리는 함수로, 화면에 보여지는 시점은 다음 프레임임
+    draw(context, canvas) {
+        // 이전 경로와 분리된 새로운 경로 시작
+        context.beginPath();
+        context.globalAlpha = this.alpha;
+        context.shadowBlur = 5;
+        context.shadowColor = this.color;
+        context.fillStyle = this.color;
+        // 호의 경로를 정의하는 함수 arc()를 이용하여 원의 경로를 정의
+        context.arc(this.xRatio * canvas.width, this.yRatio * canvas.height, this.radius, 0, Math.PI * 2);
+        context.fill();
+    }
+}
+
+// 원 객체를 저장하는 배열
+let circleArr = [];
+
+// 원의 균일한 분포를 위해 캔버스 전체에 4*6의 가상 격자를 만들어 원의 중심 좌표를 설정
+let rows = 4;
+let cols = 6;
+let rMaxOffset
+for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+        let xOffset = j + Math.random();
+        let yOffset = i + Math.random();
+
+        if (i === 0) {
+
+        }
+    }
+}
+function circleAnimation() {
+
 }
 
 
@@ -191,6 +248,11 @@ storageLabels.forEach((storageLabel) => {
 
     });
 });
+
+//  ──────────────── benefit-sec ────────────────
+// gsap.utils.toArray(): 명시된 dom 요소를 JS 배열로 변환 
+const benefitArr = gsap.utils.toArray(".benefit");
+
 
 //  ──────────────── review-sec ──────────────── 
 // review-sec에서 사용할 Swiper 인스턴스 생성

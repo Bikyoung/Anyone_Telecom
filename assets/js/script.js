@@ -36,14 +36,23 @@ class Circle {
         this.yRatio = yRatio;
         this.radius = (Math.random() * 5) + 1;
         this.alpha = Math.random();
-        this.alphaDirection = this.alpha > 0.5 ? -1 : 1;
+        // 투명도 방향 : 투명도를 증가시킬지/감소시킬지 결정
+        this.alphaDirection = this.alpha >= 0.5 ? -1 : 1;
+        // 변화량 : update() 시 투명도를 얼만큼 변화시킬지 결정
         this.speed = Math.random() * 0.01 + 0.005;
     }
 
-    alphaUpdate() {
-        this.alpha += this.alphaDirection * this.speed;
+    // 투명도, 투명도 방향 업데이트
+    update() {
+        this.alpha += this.alphaDirection * this.alpha;
 
-        if ((this.alpha <= 0.0) || (this.alpha >= 1.0)) { }
+        if (this.alpha >= 1.0) {
+            this.alphaDirection = -1;
+            this.alpha = 1.0;
+        } else if (this.alpha <= 0.0) {
+            this.alphaDirection = 1;
+            this.alpha = 0.0;
+        }
     }
 }
 
@@ -180,6 +189,146 @@ storageLabels.forEach((storageLabel) => {
         afterCostOfCurrentCard.textContent = dataAfterCost;
     });
 });
+
+//  ──────────────── benefit-sec ──────────────── 
+const benefitArr = gsap.utils.toArray(".benefit");
+const benefitArrowBtn = document.querySelectorAll(".benefit-arrow-btn");
+const benefitNextBtn = document.querySelector(".benefit-next-btn");
+const benefitPrevBtn = document.querySelector(".benefit-prev-btn");
+const benefitIdx = document.querySelector(".benefit-idx");
+const benefitDescArr = document.querySelectorAll(".benefit-desc");
+let firstIdx = 0;
+
+// .benefit-arrow-btn을 활성화/비활성화하는 함수
+function disableArrowBtn(isDisabled) {
+    benefitArrowBtn.forEach((btn) => {
+        btn.disabled = isDisabled;
+    });
+}
+
+// 첫번째 benefit의 desc 너비를 기준으로 나머지 카드의 desc 너비를 통일하는 함수
+function setWidthDesc() {
+    const width = benefitDescArr[0].offsetWidth;
+    
+    benefitDescArr.forEach((desc) => {
+        desc.style.width = `${width}px`;
+    });
+}
+
+setWidthDesc();
+gsap.registerPlugin(ScrollTrigger);
+
+// .benefit-sec이 뷰포트 상단에 닿으면 모든 .benefit이 시계 방향으로 15도씩 회전
+const benefitRotateTl = gsap.timeline({
+    scrollTrigger: {
+        trigger: ".benefit-sec",
+        start: "top top",
+        end: "center center",
+        onLeave: () => {
+            benefitNextBtn.disabled = false;
+        }
+    }
+});
+
+benefitArr.forEach((benefit, idx) => {
+    benefitRotateTl.to(benefit, {
+        rotate: -15 * idx
+    }, "<");
+});
+
+// .benefit-next-btn 클릭 시 각 카드 회전 및 opacity/first 클래스 갱신
+benefitNextBtn.addEventListener("click", () => {
+    if(firstIdx >= 5) {
+        return;
+    }
+
+    const benefitNextTl = gsap.timeline({
+        onStart: () => {
+            benefitIdx.textContent = firstIdx + 2;
+            disableArrowBtn(true);
+        },
+        onComplete: () => {
+            firstIdx += 1;
+            disableArrowBtn(false);
+
+            if(firstIdx >= 5) {
+                benefitNextBtn.disabled = true;
+            }
+        }
+    });
+ 
+    benefitArr.forEach((benefit) => {
+        benefitNextTl.to(benefit, {
+            rotate: "+=15"
+        }, "<");
+    });
+
+    if(benefitArr[firstIdx]) {
+        benefitNextTl.to(benefitArr[firstIdx], {
+            opacity: 0,
+            onStart: () => {
+                benefitArr[firstIdx].classList.remove("first");
+            }
+        }, "<");
+    }
+
+    if(benefitArr[firstIdx + 1]) {
+        benefitNextTl.to(benefitArr[firstIdx + 1], {
+            onStart: () => {
+                benefitArr[firstIdx + 1].classList.add("first");
+            }
+        }, "<");
+    }
+});
+
+// .benefit-prev-btn 클릭 시 각 카드 회전 및 opacity/first 클래스 갱신
+benefitPrevBtn.addEventListener("click", () => {
+    if(firstIdx <= 0) {
+        return;
+    }
+
+    const benefitPrevTl = gsap.timeline({
+        onStart: () => {
+            benefitIdx.textContent = firstIdx;
+            disableArrowBtn(true);
+        },
+        onComplete: () => {
+            firstIdx -= 1;
+            disableArrowBtn(false);
+
+            if(firstIdx <= 0) {
+                benefitPrevBtn.disabled = true;
+            }
+        }
+    });
+ 
+    benefitArr.forEach((benefit) => {
+        benefitPrevTl.to(benefit, {
+            rotate: "-=15"
+        }, "<");
+    });
+
+    if(benefitArr[firstIdx]) {
+        benefitPrevTl.to(benefitArr[firstIdx], {
+            opacity: 1,
+            onStart: () => {
+                benefitArr[firstIdx].classList.remove("first");
+            }
+        }, "<");
+    }
+
+    if(benefitArr[firstIdx - 1]) {
+        benefitPrevTl.to(benefitArr[firstIdx - 1], {
+            opacity: 1,
+            onStart: () => {
+                benefitArr[firstIdx - 1].classList.add("first");
+            }
+        }, "<");
+    }
+}); 
+
+window.addEventListener("resize", setWidthDesc);
+
 
 //  ──────────────── review-sec ──────────────── 
 // review-sec에서 사용할 Swiper 인스턴스 생성
