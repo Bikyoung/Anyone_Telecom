@@ -1,60 +1,97 @@
 //  ──────────────── canvas ────────────────
-const circleCanvases = document.querySelectorAll(".circle-canvas");
-const meteorCanvases = document.querySelectorAll(".meteor-canvas");
+const circleCanvasArr = document.querySelectorAll(".circle-canvas");
 
-// 브라우저 창의 해상도가 변경될 시 canvas의 내부 해상도와 스타일 크기를 재설정
-window.addEventListener("resize", () => {
-    circleCanvases.forEach((circleCanvas) => {
-        let parentWidth = circleCanvas.closest("section").offsetWidth;
-        let parentHeight = circleCanvas.closest("section").offsetHeight;
+// canvas의 상위 section 크기와 동일하게 canvas의 해상도와 CSS 크기를 설정하는 함수
+function setCanvasSize(canvas) {
+    const parentSec = canvas.closest("section");
+    const parentSecWidth = parentSec.offsetWidth;
+    const parentSecHeight = parentSec.offsetHeight;
 
-        // canvas의 내부 해상도를 설정
-        circleCanvas.width = parentWidth;
-        circleCanvas.height = parentHeight;
+    canvas.width = parentSecWidth;
+    canvas.height = parentSecHeight;
 
-        // canvas의 스타일 크기를 설정
-        circleCanvas.style.width = `${parentWidth}px`;
-        circleCanvas.style.height = `${parentHeight}px`;
+    canvas.style.width = `${parentSecWidth}px`;
+    canvas.style.height = `${parentSecHeight}px`;
+}
+
+// 컨텍스트(ctx)의 속성을 설정하는 함수
+function setupContext({ctx, fillStyle="#FC8A46", shadowColor="#FC8A46", shadowBlur=10} = {}) {
+    ctx.fillStyle = fillStyle;
+    ctx.shadowColor = shadowColor;
+    ctx.shadowBlur = shadowBlur;
+}
+
+class Circle {
+    constructor(row, col, rows, cols) {
+        this.xRatio = (Math.random() + col) / cols;         // 상대적 X 좌표
+        this.yRatio = (Math.random() + row) / rows;         // 상대적 Y 좌표
+        this.radius = (Math.random() * 2) + 2;              // 반지름: 2이상 4미만
+        this.angle = Math.random() * Math.PI * 2;           // 초기 각도: 0 ~ 360도
+        this.alpha = (Math.sin(this.angle) + 1) / 2;
+        this.angleSpeed = (Math.random() * 0.05) + 0.005;   // 각도 변화량
+    }
+
+    // 투명도를 변화시키는 함수
+    updateAlpha() {
+        this.angle += this.angleSpeed;
+        this.alpha = (Math.sin(this.angle) + 1) / 2;
+    }
+
+    // 원을 그리는 함수
+    draw(canvasWidth, canvasHeight, ctx) {
+        const x = canvasWidth * this.xRatio;    // 실제 x 좌표
+        const y = canvasHeight * this.yRatio;   // 실제 y 좌표
+
+        ctx.globalAlpha = this.alpha;
+        ctx.beginPath();
+        ctx.arc(x, y, this.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.closePath();
+    }
+}
+
+// 모든 원을 그리고, 각 원의 투명도를 업데이트하며 다음 프레임에 애니메이션하는 함수
+function drawCircleArr(circleCanvas, circleArr, ctx) {
+    ctx.clearRect(0, 0, circleCanvas.width, circleCanvas.height);
+
+    for(let i = 0; i < circleArr.length; i++) {    
+        const circle = circleArr[i];
+
+        circle.draw(circleCanvas.width, circleCanvas.height, ctx);
+        circle.updateAlpha();
+    }
+
+    requestAnimationFrame(() => {
+        drawCircleArr(circleCanvas, circleArr, ctx);
     });
+}
 
-    meteorCanvases.forEach((meteorCanvas) => {
-        let parentWidth = meteorCanvas.closest("section").offsetWidth;
-        let parentHeight = meteorCanvas.closest("section").offsetHeight;
+// 모든 circleCanvas에 drawCircleArr()를 실행
+circleCanvasArr.forEach((circleCanvas) => {
+    const ctx = circleCanvas.getContext("2d");
+    const circleArr = [];
+    const rows = 4;
+    const cols = 6;
 
-        meteorCanvas.width = parentWidth;
-        meteorCanvas.height = parentHeight;
+    setCanvasSize(circleCanvas);
+    setupContext({ctx: ctx});
 
-        meteorCanvas.style.width = `${parentWidth}px`;
-        meteorCanvas.style.height = `${parentHeight}px`;
+    for(let i = 0; i < rows; i++) {
+        for(let j = 0; j < cols; j++) {
+            const circle = new Circle(i, j, rows, cols);
+            circleArr.push(circle);
+        }
+    }
+
+    drawCircleArr(circleCanvas, circleArr, ctx);
+
+    window.addEventListener("resize", () => {
+        setCanvasSize(circleCanvas);
+        setupContext({ctx: ctx});
     });
 });
 
-// 깜빡이는 원 클래스
-class Circle {
-    constructor(xRatio, yRatio) {
-        this.xRatio = xRatio;
-        this.yRatio = yRatio;
-        this.radius = (Math.random() * 5) + 1;
-        this.alpha = Math.random();
-        // 투명도 방향 : 투명도를 증가시킬지/감소시킬지 결정
-        this.alphaDirection = this.alpha >= 0.5 ? -1 : 1;
-        // 변화량 : update() 시 투명도를 얼만큼 변화시킬지 결정
-        this.speed = Math.random() * 0.01 + 0.005;
-    }
 
-    // 투명도, 투명도 방향 업데이트
-    update() {
-        this.alpha += this.alphaDirection * this.alpha;
-
-        if (this.alpha >= 1.0) {
-            this.alphaDirection = -1;
-            this.alpha = 1.0;
-        } else if (this.alpha <= 0.0) {
-            this.alphaDirection = 1;
-            this.alpha = 0.0;
-        }
-    }
-}
 
 
 //  ──────────────── recommend-sec ──────────────── 
@@ -336,7 +373,7 @@ let reviewSwiper = new Swiper(".reviewSwiper", {
     slidesPerView: "auto",
     spaceBetween: 20,
     autoplay: {
-        delay: 2000,
+        delay: 1200,
         disableOnInteraction: false,
     },
     loop: true,

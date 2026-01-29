@@ -46,8 +46,9 @@
     --black-color: #121212;
     --primary-color: #FC8A46;
     --brown-color: #5D4037;
-    --light-gray-color: #E0E0E0;
-    --dark-gray-color: #989898;
+    --gray-color-50: #E0E0E0;
+    --gray-color-100: #ADADAD;
+    --gray-color-150: #989898;
     --yellow-gradient-color: linear-gradient(to bottom, #5E5E5E, #59543A);
     --light-yellow-color: #FFF3E0;
 
@@ -155,7 +156,7 @@ button {
     left: 0;
     right: 0;
     z-index: -1;
-    border: 1px solid var(--dark-gray-color);
+    border: 1px solid var(--gray-color-150);
     border-radius: 50px;
     transform: scale(0.9);
     transition: all 0.3s ease-in-out;
@@ -189,11 +190,11 @@ button {
 
 .yellow-gradient-bg {
     background: var(--yellow-gradient-color);
-    border: 0.5px solid var(--dark-gray-color);
+    border: 0.5px solid var(--gray-color-150);
 }
 
 .small-desc {
-    color: var(--dark-gray-color);
+    color: var(--gray-color-150);
     font-size: var(--font-size-body-sm);
     text-align: center;
     line-height: 1.4;
@@ -201,14 +202,24 @@ button {
     margin-top: var(--space-xl);
 }
 
+/* ──────────────── circle-canvas ──────────────── */
+.circle-canvas {
+    position: absolute;
+    inset: 0;
+}
+
 /* ──────────────── hero-sec ──────────────── */
 .hero-sec {
+    position: relative;
     color: var(--white-color);
 }
 
 .hero-container {
+    background-color: transparent;
     flex-direction: row;
     justify-content: space-between;
+    position: relative;
+    z-index: 5;
 }
 
 /* canvas로 그린 원이 요소 틈에 보이지 않도록 배경 설정 */
@@ -232,13 +243,12 @@ button {
 .hero-sub-tit {
     font-size: var(--font-size-title2);
     font-weight: 400;
-    color: var(--light-gray-color);
+    color: var(--gray-color-50);
     margin: var(--space-md) 0 var(--space-xl);
     line-height: 1.1;
     letter-spacing: 0.02em;
 }
 
-/* https://clamp.font-size.app/?config=eyJyb290IjoiMTYiLCJtaW5XaWR0aCI6IjEwMjVweCIsIm1heFdpZHRoIjoiMTkyMHB4IiwibWluRm9udFNpemUiOiIzNTBweCIsIm1heEZvbnRTaXplIjoiNDAwcHgifQ%3D%3D 활용 */
 .hero-image-box-lg {
     width: clamp(32rem, 22.8571rem + 8.9286vw, 40rem);
 }
@@ -265,14 +275,14 @@ button {
 .tab-btn button {
     position: relative;
     font-size: var(--font-size-title2);
-    color: var(--dark-gray-color);
+    color: var(--gray-color-150);
     padding: 0 var(--space-lg);
     line-height: 1.1;
 }
 
 .tab-btn:first-child button::after {
     content: "";
-    background-color: var(--dark-gray-color);
+    background-color: var(--gray-color-150);
     /* 의사 요소는 기본적으로 inline 요소라 width/height 적용 안 됨 */
     display: inline-block;
     width: 0.2rem;
@@ -324,7 +334,7 @@ button {
 .swiper-pagination-bullet {
     width: 1.2rem;
     height: 1.2rem;
-    background-color: var(--light-gray-color);
+    background-color: var(--gray-color-50);
 }
 
 .swiper-horizontal>.swiper-pagination-bullets,
@@ -385,7 +395,7 @@ button {
 .option-name {
     height: fit-content;
     font-size: var(--font-size-body-xl);
-    color: var(--dark-gray-color);
+    color: var(--gray-color-150);
 }
 
 .color-list,
@@ -405,7 +415,7 @@ button {
     /* currentColor: 현 요소의 color 속성 값을 가져옴, color는 상속됨 */
     background-color: currentColor;
     border-radius: 50px;
-    box-shadow: inset 0 0 0 0.1rem var(--dark-gray-color);
+    box-shadow: inset 0 0 0 0.1rem var(--gray-color-150);
     position: absolute;
     top: 50%;
     right: 0;
@@ -413,7 +423,7 @@ button {
 }
 
 .color.selected label::after {
-    box-shadow: inset 0 0 0 0.25rem var(--white-color), inset 0 0 0 0.35rem var(--dark-gray-color);
+    box-shadow: inset 0 0 0 0.25rem var(--white-color), inset 0 0 0 0.35rem var(--gray-color-150);
 }
 
 .storage-option {
@@ -442,7 +452,7 @@ button {
 .storage label::after {
     content: "";
     display: block;
-    box-shadow: inset 0 0 0 0.1rem var(--dark-gray-color);
+    box-shadow: inset 0 0 0 0.1rem var(--gray-color-150);
     border-radius: 50px;
     position: absolute;
     top: 0;
@@ -460,7 +470,7 @@ button {
     height: fit-content;
     margin-bottom: var(--space-xxs);
     font-size: var(--font-size-body-sm);
-    color: var(--dark-gray-color);
+    color: var(--gray-color-150);
     text-align: right;
     text-decoration-line: line-through;
     text-decoration-color: var(--primary-color);
@@ -515,7 +525,7 @@ button {
 
 .review-sec .phone-name {
     font-size: var(--font-size-body-sm);
-    color: var(--dark-gray-color);
+    color: var(--gray-color-150);
     margin-top: var(--space-xs);
 }
 
@@ -645,7 +655,7 @@ button {
 }
 
 .process-tit {
-    color: var(--dark-gray-color);
+    color: var(--gray-color-150);
 }
 
 .process-icon {
@@ -659,6 +669,7 @@ button {
     line-height: 1.4;
     letter-spacing: 0.04em;
 }
+
 
 
 /* ──────────────── break point : 1439px ──────────────── */
