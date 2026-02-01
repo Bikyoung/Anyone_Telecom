@@ -39,6 +39,8 @@
         url("../font/Pretendard-Regular.woff") format('woff');
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
 /* ──────────────── common ──────────────── */
 :root {
     /* ──── color ──── */
@@ -208,6 +210,113 @@ button {
     line-height: 1.4;
     letter-spacing: 0.02em;
     margin-top: var(--space-xl);
+}
+
+/* ──────────────── header ──────────────── */
+header {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 80;
+    background-color: rgba(18, 18, 18, 0.8);
+}
+
+.header-container {
+    height: clamp(5rem, 4.308rem + 1.923vw, 8rem);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+header a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    font-family: "Sora";
+    font-size: var(--font-size-title2); 
+    font-weight: 800;   
+}
+
+.logo-gradient {
+    background: linear-gradient(to bottom, var(--primary-color), #ffe279);
+    background-clip: text;
+    color: transparent;
+}
+
+.menu-list {
+    font-size: var(--font-size-body-lg);
+    display: flex; 
+    gap: clamp(2.5rem, 1.5rem + 1.302vw, 4rem);
+}
+
+.hamburger-btn {
+    display: none;
+    font-size: var(--font-size-body-xl);
+    color: var(--white-color);
+}
+
+.menu-item a:hover, .menu-item a:focus {
+    color: var(--white-color);  
+}
+
+/* ──────────────── slide-menu ──────────────── */
+.slide-menu {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--black-color);
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    transform: translateX(100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.slide-menu.show {
+    transform: translateX(0);
+}
+
+.menu-container {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.menu-container > * {
+    width: 100%;
+}
+
+.menu-head {
+    height: clamp(5rem, 4.308rem + 1.923vw, 8rem);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.close-menu {
+    font-size: var(--font-size-body-xl);
+    color: var(--white-color);
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.slide-menu .menu-list {
+    padding-top: 4rem;
+    flex-direction: column;
+    align-items: start;
 }
 
 /* ──────────────── circle-canvas ──────────────── */
@@ -934,6 +1043,7 @@ footer p {
 
 /* ──────────────── validation-modal ──────────────── */
 .validation-modal {
+    width: clamp(30rem, 25.385rem + 12.821vw, 50rem);
     padding: 3rem;
     background-color: var(--white-color);
     border-radius: 1rem;
@@ -1006,7 +1116,7 @@ footer p {
         --font-size-display: 4rem;
         --font-size-title1: 3.6rem;
         --font-size-title2: 2.4rem;
-        --font-size-title3: 2.4rem;
+        --font-size-title3: 2.2rem;
         --font-size-card-tit: 2.2rem;
         --font-size-body-xl: 2rem;
         --font-size-body-lg: 1.8rem;
@@ -1116,6 +1226,17 @@ footer p {
 
     .no-mob {
         display: none;
+    }
+
+    .only-mob {
+        display: block;
+    }
+
+    /* ──────────────── header ──────────────── */
+    .hamburger-btn {
+        display: flex;
+        justify-content: end;
+        align-items: center;
     }
 
     /* ──────────────── hero-sec ──────────────── */
@@ -1246,7 +1367,7 @@ footer p {
         --font-size-display: 2.8rem;
         --font-size-title1: 2.8rem;
         --font-size-title2: 2.2rem;
-        --font-size-title3: 1.8rem;
+        --font-size-title3: 2rem;
         --font-size-card-tit: 1.8rem;
     }
 

@@ -91,8 +91,22 @@ circleCanvasArr.forEach((circleCanvas) => {
     });
 });
 
+//  ──────────────── hero-sec ────────────────
+const headerContainer = document.querySelector(".header-container");
+const heroContainer = document.querySelector(".hero-container");
 
+/* 뷰포트 상단에 고정된 header로 인해 hero 영역의 상단 여백이 부족해 보임
+   이를 보완하기 위해 header 높이 + hero의 padding-bottom 값을 hero의 padding-top으로 동적 설정*/
+function setHeroPaddingTop() {
+    const headerHeight = headerContainer.offsetHeight;
+    let heroPaddingBottom = getComputedStyle(heroContainer).paddingBottom;
+    
+    heroPaddingBottom = parseInt(heroPaddingBottom);
+    heroContainer.style.paddingTop = `${headerHeight + heroPaddingBottom}px`;
+}
 
+setHeroPaddingTop();
+window.addEventListener("resize", setHeroPaddingTop);
 
 //  ──────────────── recommend-sec ──────────────── 
 const tabBtns = document.querySelectorAll(".tab-btn button");
@@ -255,23 +269,25 @@ function setWidthDesc() {
 setWidthDesc();
 gsap.registerPlugin(ScrollTrigger);
 
-// .benefit-sec이 뷰포트 상단에 닿으면 모든 .benefit이 시계 방향으로 15도씩 회전
 const benefitRotateTl = gsap.timeline({
     scrollTrigger: {
         trigger: ".benefit-sec",
         start: "top top",
-        end: "center center",
-        onLeave: () => {
-            benefitNextBtn.disabled = false;
-        }
+        end: "+=300"
     }
 });
 
+// .benefit-sec이 뷰포트 상단에 닿으면 모든 .benefit이 시계 방향으로 15도씩 회전
 benefitArr.forEach((benefit, idx) => {
     benefitRotateTl.to(benefit, {
         rotate: -15 * idx
     }, "<");
 });
+
+// 타임라인 종료 직후 benefitNextBtn 비활성화 해제
+benefitRotateTl.call(() => {
+    benefitNextBtn.disabled = false;
+}, null, ">");
 
 // .benefit-next-btn 클릭 시 각 카드 회전 및 opacity/first 클래스 갱신
 benefitNextBtn.addEventListener("click", () => {
@@ -468,4 +484,24 @@ form.addEventListener("submit", (e) => {
             validationErrorMsg.textContent = contentInput.dataset.requiredMsg;
         }
     }
+});
+
+//  ──────────────── slide-menu ──────────────── 
+const hamburgerBtn = document.querySelector(".hamburger-btn");
+const closeMenu = document.querySelector(".close-menu");
+const slideMenu = document.querySelector(".slide-menu");
+const slideMenuItemArr = document.querySelectorAll(".slide-menu a");
+
+hamburgerBtn.addEventListener("click", ()=> {
+    slideMenu.classList.add("show");
+});
+
+closeMenu.addEventListener("click", ()=> {
+    slideMenu.classList.remove("show");
+});
+
+slideMenuItemArr.forEach((slideMenuItem) => {
+    slideMenuItem.addEventListener("click", ()=> {
+        slideMenu.classList.remove("show");
+    });
 });
