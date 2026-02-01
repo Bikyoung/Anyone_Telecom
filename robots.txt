@@ -1,0 +1,32 @@
+# robots.txt for Any1 Telecom
+# https://bk-anyone-telecom.netlify.app/
+
+User-agent: *
+Allow: /
+
+# Sitemap 위치
+Sitemap: https://bk-anyone-telecom.netlify.app/sitemap.xml
+
+# 크롤링 제외할 디렉토리 (필요시 추가)
+# Disallow: /admin/
+# Disallow: /private/
+
+# 주요 검색 엔진 크롤러 설정
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Baiduspider
+Allow: /
+
+# 크롤링 속도 제한 (선택사항)
+# Crawl-delay: 1
+
