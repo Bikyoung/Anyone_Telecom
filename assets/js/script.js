@@ -25,7 +25,7 @@ class Circle {
     constructor(row, col, rows, cols) {
         this.xRatio = (Math.random() + col) / cols;         // 상대적 X 좌표
         this.yRatio = (Math.random() + row) / rows;         // 상대적 Y 좌표
-        this.radius = (Math.random() * 2) + 2;              // 반지름: 2이상 4미만
+        this.radius = (Math.random() * 2) + 1.5;            // 반지름: 1.5이상 3.5미만
         this.angle = Math.random() * Math.PI * 2;           // 초기 각도: 0 ~ 360도
         this.alpha = (Math.sin(this.angle) + 1) / 2;
         this.angleSpeed = (Math.random() * 0.05) + 0.005;   // 각도 변화량
@@ -383,4 +383,89 @@ let reviewSwiper = new Swiper(".reviewSwiper", {
 window.addEventListener("resize", () => {
     reviewSwiper.update();
     reviewSwiper.slideToLoop(0);
+});
+
+
+//  ──────────────── modal ──────────────── 
+const body = document.querySelector("body");
+const showPrivacyArr = document.querySelectorAll(".show-privacy");
+const footerTerms = document.querySelector(".footer-terms");
+const modalOverlay = document.querySelector(".modal-overlay");
+const privacyModal = document.querySelector(".privacy-modal");
+const termsModal = document.querySelector(".terms-modal");
+const showModalArr = document.querySelectorAll(".show-modal");
+const closeModalArr = document.querySelectorAll(".close-modal");
+
+// .show-modal 클릭 시 스크롤을 잠금하고 .modal-overlay 표시
+showModalArr.forEach((showModal) => {
+    showModal.addEventListener("click", ()=> {
+        body.classList.add("stop-scroll");
+        modalOverlay.style.display = "block";
+    });
+});
+
+// .close-modal 클릭 시 스크롤 잠금을 해제하고 .modal-overlay와 해당 팝업을 숨김
+closeModalArr.forEach((closeModal) => {
+    const parentModal = closeModal.closest(".modal");
+
+    closeModal.addEventListener("click", ()=> {
+        body.classList.remove("stop-scroll");
+        modalOverlay.style.display = "none";
+        parentModal.style.display = "none";
+    });
+});
+
+// .show-privacy 클릭 시 .privacy-modal 표시
+showPrivacyArr.forEach((showPrivacy) => {
+    showPrivacy.addEventListener("click", ()=> {
+        privacyModal.style.display = "block";
+    });
+});
+
+// .footer-terms 클릭 시 .terms-Modal 표시
+footerTerms.addEventListener("click", ()=> {
+    termsModal.style.display = "block";
+});
+
+
+//  ──────────────── contact-sec ──────────────── 
+const requiredFieldArr = document.querySelectorAll(".required-field");
+const nameInput = document.querySelector("#name");
+const telInput = document.querySelector("#tel");
+const contentInput = document.querySelector("#content");
+const form = document.querySelector("form");
+const validationModal = document.querySelector(".validation-modal");
+const validationErrorMsg = document.querySelector(".validation-modal .error-msg");
+
+// #tel의 입력값이 패턴에 부합하는지 확인용 RegExp 객체(정규식) 생성
+const telPattern = new RegExp(telInput.pattern);
+
+// .contact-form의 커스텀 유효성 검사 및 에러 메시지 표시
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let isvalid = true;
+
+    requiredFieldArr.forEach((requiredField) => {
+        if(requiredField.value.trim() === "" || !telPattern.test(telInput.value)) {
+            isvalid = false;
+        }
+    });
+
+    if(isvalid) {
+        form.submit();
+    } else {
+        body.classList.add("stop-scroll");
+        modalOverlay.style.display = "block";
+        validationModal.style.display = "block";
+
+        if(nameInput.value.trim() === "") {
+            validationErrorMsg.textContent = nameInput.dataset.requiredMsg;
+        } else if(telInput.value.trim() === "") {
+            validationErrorMsg.textContent = telInput.dataset.requiredMsg;
+        } else if(!telPattern.test(telInput.value)) {
+            validationErrorMsg.textContent = telInput.dataset.patternMsg;
+        } else if(!contentInput.value.trim() === "") {
+            validationErrorMsg.textContent = contentInput.dataset.requiredMsg;
+        }
+    }
 });

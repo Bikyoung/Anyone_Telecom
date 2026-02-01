@@ -111,7 +111,7 @@ circleCanvasArr.forEach((circleCanvas) => {
 
     window.addEventListener("resize", () => {
         setCanvasSize(circleCanvas);
-        /* 캔버스의 width/height를 재설정할 시 
+        /* 캔버스의 HTML 속성 width/height를 재설정할 시 
            1) 캔버스를 새로 생성 2) 기존 그림 삭제 3)컨텍스트 리셋되므로 
            컨텍스트를 다시 설정해야 그림이 다시 그려짐 */
         setupContext({ctx: ctx});
@@ -522,4 +522,98 @@ window.addEventListener("resize", () => {
     reviewSwiper.update();
     // 첫 슬라이드로 이동
     reviewSwiper.slideToLoop(0);
+});
+
+//  ──────────────── modal ──────────────── 
+const body = document.querySelector("body");
+const showPrivacyArr = document.querySelectorAll(".show-privacy");
+const footerTerms = document.querySelector(".footer-terms");
+const modalOverlay = document.querySelector(".modal-overlay");
+const privacymodal = document.querySelector(".privacy-modal");
+const termsmodal = document.querySelector(".terms-modal");
+const showmodalArr = document.querySelectorAll(".show-modal");
+const closemodalArr = document.querySelectorAll(".close-modal");
+
+// .show-modal 클릭 시 스크롤 잠금 수행 및 .modal-overlay 표시
+showmodalArr.forEach((showmodal) => {
+    showmodal.addEventListener("click", ()=> {
+        body.classList.add("stop-scroll");
+        modalOverlay.style.display = "block";
+    });
+});
+
+// .close-modal 클릭 시 스크롤 잠금을 해제하고 .modal-overlay와 해당 팝업을 숨김
+closemodalArr.forEach((modalClose) => {
+    const parentmodal = modalClose.closest(".modal");
+
+    modalClose.addEventListener("click", ()=> {
+        body.classList.remove("stop-scroll");
+        modalOverlay.style.display = "none";
+        parentmodal.style.display = "none";
+    });
+});
+
+// .show-privacy 클릭 시 .privacy-modal 표시
+showPrivacyArr.forEach((showPrivacy) => {
+    showPrivacy.addEventListener("click", ()=> {
+        privacymodal.style.display = "block";
+    });
+});
+
+// .footer-terms 클릭 시 .terms-modal 표시
+footerTerms.addEventListener("click", ()=> {
+    termsmodal.style.display = "block";
+});
+
+
+//  ──────────────── contact-sec ──────────────── 
+const requiredFieldArr = document.querySelectorAll(".required-field");
+const nameInput = document.querySelector("#name");
+const telInput = document.querySelector("#tel");
+const contentInput = document.querySelector("#content");
+const form = document.querySelector("form");
+const validationModal = document.querySelector(".validation-modal");
+const validationErrorMsg = document.querySelector(".validation-modal .error-msg");
+
+/* 정규 표현식(RegExp) : 문자열을 특정한 규칙으로 정의한 표현식
+   타 문자열이 규칙에 부합하는지 검사(match, test)하거나 규칙에 부합하는 부분 치환(replace)하는데 사용 */
+// #tel의 입력값이 패턴에 부합하는지 확인용 RegExp 객체(정규식) 생성
+const telPattern = new RegExp(telInput.pattern);
+
+// .contact-form의 커스텀 유효성 검사 및 에러 메시지 표시
+form.addEventListener("submit", (e) => {
+    /* form 태그의 novalidate 속성: 브라우저 기본 유효성 검사를 막아 유효하지 않은 폼도 제출될 수 있음
+       따라서 submit 이벤트 발생 시 e.preventDefault()로 기본 제출을 막고 커스텀 검사를 수행 */ 
+    /* addEventListener 기본 동작
+       : 첫 번째 매개변수로 지정된 이벤트 발생 시 브라우저가 해당 이벤트 객체를 생성해 콜백 함수의 첫 번째 매개변수로 전달 */ 
+    // 현재 명시한 이벤트는 submit이므로, e는 submit 이벤트 객체이며 e.preventDefault()로 폼 제출을 방지
+    e.preventDefault();
+    // 전체 유효성 결과를 저장
+    let isvalid = true;
+
+    /* 모든 필수 입력 필드를 순회하며 값 존재 여부와 전화번호 패턴 일치 여부 검사
+       하나라도 불만족 시 isvalid를 false로 설정 */
+    requiredFieldArr.forEach((requiredField) => {
+        if(requiredField.value.trim() === "" || !telPattern.test(telInput.value)) {
+            isvalid = false;
+        }
+    });
+
+    if(isvalid) {
+        form.submit();
+    } else {
+        body.classList.add("stop-scroll");
+        modalOverlay.style.display = "block";
+        validationModal.style.display = "block";
+
+        if(nameInput.value.trim() === "") {
+            validationErrorMsg.textContent = nameInput.dataset.requiredMsg;
+        } else if(telInput.value.trim() === "") {
+            validationErrorMsg.textContent = telInput.dataset.requiredMsg;
+        } else if(!telPattern.test(telInput.value)) {
+            validationErrorMsg.textContent = telInput.dataset.patternMsg;
+        } else if(!contentInput.value.trim() === "") {
+            validationErrorMsg.textContent = contentInput.dataset.requiredMsg;
+        }
+    }
 });

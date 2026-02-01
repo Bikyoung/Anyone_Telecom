@@ -45,10 +45,12 @@
     --white-color: #ffffff;
     --black-color: #121212;
     --primary-color: #FC8A46;
+    --primary-hover-color: #ff6a14;
     --brown-color: #5D4037;
     --gray-color-50: #E0E0E0;
-    --gray-color-100: #ADADAD;
-    --gray-color-150: #989898;
+    --gray-color-100: #adadad;
+    --gray-color-150: #999999;
+    --gray-color-200: #3a3a3a;
     --yellow-gradient-color: linear-gradient(to bottom, #5E5E5E, #59543A);
     --light-yellow-color: #FFF3E0;
 
@@ -89,6 +91,12 @@ html {
 body {
     background-color: var(--black-color);
     font-family: "Pretendard";
+}
+
+body.stop-scroll {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 }
 
 img {
@@ -447,7 +455,6 @@ button {
     position: relative;
 }
 
-
 /* 타겟 사이즈는 유지한 채 시각적 테두리만 작게 보이도록 의사 요소를 사용함 */
 .storage label::after {
     content: "";
@@ -670,7 +677,289 @@ button {
     letter-spacing: 0.04em;
 }
 
+/* ──────────────── contact-sec ──────────────── */
+.contact-sec {
+    position: relative;
+}
 
+.form-container {
+    width: 90%;
+    position: relative;
+    z-index: 5;
+}
+
+.contact-robot {
+    width: clamp(5rem, 3.846rem + 3.205vw, 10rem);
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateY(-100%);
+}
+
+.contact-form {
+    width: 100%;
+    padding: 4rem 3rem;
+    background: var(--yellow-gradient-color);
+    border: 0.05rem solid var(--gray-color-150);
+    border-radius: 1rem;
+}
+
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;    
+}
+
+.form-grid input, .form-grid textarea {
+    width: 100%;
+    padding: 1.5rem;
+    font-family: inherit;
+    font-size: var(--font-size-body-md);
+    line-height: 1.4;
+    border-radius: 1rem;
+    border: none;
+    outline: none;
+}
+
+.form-grid input:focus, .form-grid textarea:focus {
+    box-shadow: inset 0 0 0 0.1rem var(--primary-color);    
+}
+
+.form-grid textarea {
+    height: 20rem;
+}
+
+.grid-top {
+    display: grid;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+}
+
+.label-match {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+}
+
+label {
+    font-size: var(--font-size-body-lg);
+    color: var(--gray-color-100);
+    cursor: pointer;
+}
+
+.privacy-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 6rem;
+}
+
+#privacy-check {
+    width: 0.1rem;
+    height: 0.1rem;
+    margin: -0.1rem;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+}
+
+.fa-square-check {
+    font-size: var(--font-size-body-sm); ;    
+    color: var(--gray-color-100);
+    opacity: 0.35;
+    margin-right: 0.5rem;
+}
+
+#privacy-check:checked + label .fa-square-check {
+    color: var(--primary-color);
+    opacity: 1;
+}
+
+.privacy-group label{
+    height: 4.4rem;
+    font-size: var(--font-size-body-sm);  
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+}
+
+.privacy-detail {
+    font-size: var(--font-size-body-sm);   
+    color: var(--gray-color-100);
+    text-decoration: underline;
+    text-underline-offset: 0.4rem;
+    letter-spacing: 0.01em;
+    transition: all 0.3s ease-in-out; 
+}
+
+.privacy-detail:hover {
+    color: var(--white-color);  
+}
+
+.form-btn {
+    width: 100%;
+    height: clamp(5rem, 4.769rem + 0.641vw, 6rem);
+    font-size: var(--font-size-body-md);
+    font-weight: 600;   
+    color: var(--white-color); 
+    background-color: var(--primary-color);
+    border-radius: 1rem;
+    transition: all 0.25s ease-in-out; 
+}
+
+.form-btn:hover {
+    background-color: var(--primary-hover-color);
+}
+
+/* ──────────────── footer ──────────────── */
+footer {
+    background-color: var(--gray-color-200);
+}
+
+.footer-container {
+    padding: calc(var(--space-padding-vertical) / 2) var(--space-padding-horizontal);
+    align-items: start;
+}
+
+footer p {
+    font-size: var(--font-size-body-sm);
+    color: var(--gray-color-100);
+    letter-spacing: 0.01em;
+    line-height: 1.4;
+}
+
+.company-info-1 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.company-info-2 {
+    margin: 3rem 0;
+}
+
+.copyright {
+    font-weight: 300;
+}
+
+.association {
+    display: flex;
+    gap: 3rem;
+    margin-top: 3rem;
+}
+
+.association img {
+    height: 3rem;
+}
+
+/* width: fit-content; height: fit-content;를 줘도 min-width/min-height가 우선 적용됨.
+   따라서 min-width와 min-height 속성을 무효화해야함 */
+.footer-container button {
+    font-size: var(--font-size-body-sm);
+    color: var(--gray-color-50);
+    font-weight: 500;
+    min-width: unset;
+    min-height: unset;
+    width: fit-content;
+    height: fit-content;
+}
+
+.footer-container button:hover {
+    color: var(--primary-color);
+}
+
+/* ──────────────── modal-overlay ──────────────── */
+.modal-overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: none;
+}
+
+/* ──────────────── modal-common ──────────────── */
+.modal {
+    width: clamp(30rem, 16.154rem + 38.462vw, 90rem);
+    max-height: 80vh;
+    overflow: auto;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 80;
+    transform: translate(-50%, -50%);
+    display: none;
+}
+
+.modal > * {
+    padding: 3rem;
+}
+
+.modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--white-color);
+    border-radius: 1rem 1rem 0 0;
+    padding-bottom: 2rem;
+}
+
+.modal-title, .fa-x {
+    font-size: var(--font-size-title3);
+    font-weight: 500;
+}
+
+.close-modal {
+    display: flex;
+    justify-content: end;  
+    align-items: center;
+}
+
+.modal-body {
+    background-color: #F0F0F0;
+    border-radius:  0 0 1rem 1rem;
+    font-size: var(--font-size-body-md);
+    color: #808080;
+    line-height: 1.4;
+}
+
+.modal-content:nth-child(1) {
+    margin-bottom: 1.5rem;
+}
+
+/* ──────────────── validation-modal ──────────────── */
+.validation-modal {
+    padding: 3rem;
+    background-color: var(--white-color);
+    border-radius: 1rem;
+}
+
+.error-msg {
+    font-size: var(--font-size-body-md);
+    color: var(--black-color);
+    line-height: 1.4; 
+    text-align: center;  
+    /* JS의 \n을 줄바꿈으로 인식하며, 연속된 공백은 하나로 줄이고 자동 줄바꿈도 허용함 */
+    white-space: pre-line; 
+}
+
+.validation-modal .close-modal {
+    min-width: unset;
+    min-height: unset;
+    width: fit-content;
+    height: fit-content;
+    padding: 1rem 4rem;
+    margin: 0 auto;
+    border-radius: 1rem;
+    font-size: var(--font-size-body-sm);
+    color: var(--white-color);
+    background-color: var(--primary-color);
+}
 
 /* ──────────────── break point : 1439px ──────────────── */
 @media (max-width: 1439px) {
@@ -770,6 +1059,15 @@ button {
     /* ──────────────── benefit-sec ──────────────── */
     .benefit {
         padding: 4rem 3rem;
+    }
+
+    /* ──────────────── contact-sec ──────────────── */
+    .contact-form {
+        padding: 3rem;
+    }
+
+    .privacy-group {
+        margin-bottom: 4rem;
     }
 
 }
@@ -908,7 +1206,23 @@ button {
         text-align: left;
     }
 
+    /* ──────────────── contact-sec ──────────────── */
+    .form-container {
+        width: 85%;
+    }
 
+    .contact-form {
+        padding: 4rem;
+    }
+
+    .grid-top {
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-columns: none;
+    }
+
+    .privacy-group {
+        margin-bottom: 3rem;
+    }
 }
 
 /* ──────────────── break point : 479px ────────────────*/
@@ -937,6 +1251,7 @@ button {
     }
 
     .container {
+        width: 100%;
         max-width: 440px;
     }
 
@@ -980,5 +1295,14 @@ button {
     .process-desc {
         width: calc(100% - (20% + 8% + 8%));
         text-align: left;
+    }
+
+    /* ──────────────── contact-sec ──────────────── */
+    .form-container {
+        width: 100%;
+    }
+
+    .contact-form {
+        padding: 3rem;
     }
 }
