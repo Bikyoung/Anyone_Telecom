@@ -1,3 +1,12 @@
+// AOS 초기화
+AOS.init({
+    once: true,
+});
+
+window.addEventListener('load', () => {
+    AOS.refresh();
+});
+
 //  ──────────────── canvas ────────────────
 const circleCanvasArr = document.querySelectorAll(".circle-canvas");
 

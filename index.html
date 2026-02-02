@@ -56,6 +56,7 @@
     <link rel="stylesheet" href="./assets/css/reset.css" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/common.css" type="text/css">
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css">
 </head>
@@ -101,21 +102,25 @@
             <!-- <canvas class="meteor-canvas"></canvas> -->
             <div class="container hero-container">
                 <div class="content-box hero-content-box">
-                    <h2 class="hero-main-tit">
+                    <h2 class="hero-main-tit" data-aos="fade-up" data-aos-duration="900" data-aos-delay="200">
                         오늘도 <span class="orange-txt">실시간 업데이트<br>
                         믿고 찾는</span> 휴대폰 대리점
                     </h2>
-                    <h3 class="hero-sub-tit">
+                    <h3 class="hero-sub-tit" data-aos="fade-up" data-aos-duration="900" data-aos-delay="400">
                         대한민국 NO.1 <br class="no-pc">유·무선 통신 유통 플랫폼
                     </h3>
-                    <div class="image-box hero-image-box hero-image-box-sm no-pc">
-                        <img src="./assets/images/robot/hero-robot-front.webp" class="hero-robot-front" alt="히어로 정면 로봇">
+                    <div data-aos="fade-up" data-aos-duration="900" data-aos-delay="400">
+                        <div class="image-box hero-image-box hero-image-box-sm no-pc">
+                            <img src="./assets/images/robot/hero-robot-front.webp" class="hero-robot-front" alt="히어로 정면 로봇">
+                        </div>
                     </div>
-                    <a href="https://www.kt1004.co.kr/" class="cta hero-cta" target="_blank">
-                        휴대폰 전체 살펴보기
-                    </a>
+                    <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400" data-aos-easing="ease-out-cubic">
+                        <a href="https://www.kt1004.co.kr/" class="cta hero-cta" target="_blank">
+                            휴대폰 전체 살펴보기
+                        </a>
+                    </div>
                 </div>
-                <div class="image-box hero-image-box hero-image-box-lg only-pc">
+                <div class="image-box hero-image-box hero-image-box-lg only-pc" data-aos="fade-in" data-aos-duration="1000">
                     <img src="./assets/images/robot/hero-robot-side.webp" alt="히어로 측면 로봇">
                 </div>
             </div>
@@ -125,7 +130,7 @@
         <section class="recommend-sec" id="recommend-sec">
             <div class="container recommend-container">
                 <h2 class="sec-tit orange-txt">추천 상품</h2>
-                <ul class="tab-btn-box">
+                <ul class="tab-btn-box"  data-aos="fade-up" data-aos-duration="900">
                     <li class="tab-btn selected">
                         <button type="button">5G 모델 초특가</button>
                     </li>
@@ -133,7 +138,7 @@
                         <button type="button">4G 모델 초특가</button>
                     </li>
                 </ul>
-                <ul class="tab-content-box">
+                <ul class="tab-content-box" data-aos="fade-up" data-aos-duration="900">
                     <li class="tab-content selected">
                         <div class="tab-panel">
                             <div class="swiper-button-prev"></div>
@@ -1036,7 +1041,7 @@
         <section class="process-sec" id="process-sec">
             <div class="container process-container">
                 <h2 class="sec-tit orange-txt">구매 절차</h2>
-                <ul class="process-list">
+                <ul class="process-list" data-aos="fade-left" data-aos-duration="900">
                     <li class="card yellow-gradient-bg process">
                         <h3 class="card-tit process-tit">STEP 1</h3>
                         <img src="./assets/images/process/search.webp" class="process-icon" alt="돋보기 이미지">
@@ -1089,7 +1094,7 @@
             <canvas class="circle-canvas"></canvas>
             <div class="container contact-container">
                 <h2 class="sec-tit orange-txt">1:1 문의</h2>
-                <div class="form-container">
+                <div class="form-container" data-aos="fade-up" data-aos-duration="900">
                     <img src="./assets/images/robot/contact-robot.webp" class="contact-robot" alt="문의하기 로봇" />
                     <form class="contact-form" novalidate>
                         <div class="form-grid">
@@ -1286,16 +1291,14 @@
                 </ul>
             </nav>
         </div>
-    </header>
+    </div>
 
 
 
-    <!-- Swiper 링크 연결 -->
     <script src="./assets/js/swiper-bundle.min.js"></script>
-    <!-- Gsap 링크 연결 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-    <!-- ScrollTrigger 링크 연결 -->
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

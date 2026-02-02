@@ -1,3 +1,12 @@
+// AOS 초기화
+AOS.init({
+    once: true,
+});
+
+window.addEventListener('load', () => {
+    AOS.refresh();
+});
+
 //  ──────────────── canvas ────────────────
 //  canvas의 상위 section 크기와 동일하게 canvas의 해상도와 CSS 크기를 설정하는 함수
 function setCanvasSize(canvas) {

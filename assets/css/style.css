@@ -41,14 +41,18 @@ header a{
     gap: clamp(2.5rem, 1.5rem + 1.302vw, 4rem);
 }
 
+.menu-item a {
+    transition: all 0.3s ease-in-out;  
+}
+
+.menu-item:hover a, .menu-item:focus a {
+    color: var(--primary-color);  
+}
+
 .hamburger-btn {
     display: none;
     font-size: var(--font-size-body-xl);
     color: var(--white-color);
-}
-
-.menu-item a:hover, .menu-item a:focus {
-    color: var(--white-color);  
 }
 
 /* ──────────────── slide-menu ──────────────── */
@@ -160,12 +164,11 @@ header a{
     font-size: var(--font-size-title3);
     font-weight: 700;
     background-color: #FF5F00;
-    transition: all 0.3s ease-in-out;
     border-radius: 50px;
+    transition: all 0.3s ease-in-out;
 }
 
 .hero-cta:hover {
-    filter: brightness(110%);
     transform: scale(1.05);
 }
 
@@ -841,8 +844,8 @@ footer p {
     .hero-image-box-sm {
         width: 25rem;
         margin: 0 auto var(--space-xxl);
-        /* 이미지가 이미 정중앙에 위치하나 시각적 중앙 맞춤을 위해 30px 좌측 이동 */
-        transform: translateX(-30px);
+        /* 이미지가 이미 정중앙에 위치하나 시각적 중앙 맞춤을 위해 좌측으로 이동 */
+        transform: translateX(-12%);
     }
 
     /* ──────────────── recommend-sec ──────────────── */
