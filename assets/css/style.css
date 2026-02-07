@@ -1,12 +1,10 @@
 /* ──────────────── header ──────────────── */
 header {
+    width: 100%;
     position: fixed;
     top: 0;
-    left: 0;
-    right: 0;
     z-index: 40;
     background-color: rgba(18, 18, 18, 0.8);
-    height: 50px;
 }
 
 .header-container {
